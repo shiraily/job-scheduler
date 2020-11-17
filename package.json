@@ -1,0 +1,23 @@
+{
+  "name": "job-scheduler",
+  "version": "1.0.0",
+  "description": "Job scheduler for daily lifef",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shiraily/job-scheduler.git"
+  },
+  "author": "Takaaki Shirai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shiraily/job-scheduler/issues"
+  },
+  "homepage": "https://github.com/shiraily/job-scheduler#readme",
+  "dependencies": {
+    "codeceptjs": "^3.0.2",
+    "puppeteer": "^5.5.0"
+  }
+}
