@@ -1,5 +1,11 @@
+const { setHeadlessWhen } = require('@codeceptjs/configure');
+
+// turn on headless mode when running with HEADLESS=true environment variable
+// export HEADLESS=true && npx codeceptjs run
+setHeadlessWhen(process.env.HEADLESS);
+
 exports.config = {
-  tests: './*_test.js',
+  tests: 'src/*_test.js',
   output: './output',
   helpers: {
     Puppeteer: {
@@ -13,7 +19,7 @@ exports.config = {
   },
   bootstrap: null,
   mocha: {},
-  name: 'sbi-ipo',
+  name: 'job-scheduler',
   plugins: {
     pauseOnFail: {},
     retryFailedStep: {
