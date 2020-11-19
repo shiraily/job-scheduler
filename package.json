@@ -4,7 +4,7 @@
   "description": "Job scheduler for daily life",
   "main": "index.js",
   "scripts": {
-    "job": "npx codeceptjs run src/login_test.js",
+    "job": "npx codeceptjs run src/apply_ipo_test.js",
     "test": "test"
   },
   "repository": {
@@ -19,6 +19,7 @@
   "homepage": "https://github.com/shiraily/job-scheduler#readme",
   "dependencies": {
     "codeceptjs": "^3.0.2",
+    "dotenv": "^8.2.0",
     "puppeteer": "^5.5.0"
   },
   "devDependencies": {
