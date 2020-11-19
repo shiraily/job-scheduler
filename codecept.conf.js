@@ -21,7 +21,7 @@ exports.config = {
   bootstrap: null,
   multiple: {
     parallel: {
-      chunks: 2,
+      chunks: 5,
     }
   },
   mocha: {},
