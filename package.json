@@ -4,7 +4,8 @@
   "description": "Job scheduler for daily life",
   "main": "index.js",
   "scripts": {
-    "job": "npx codeceptjs run src/apply_ipo_test.js",
+    "ipo": "npx codeceptjs run src/apply_gotoeat_tokyo.js",
+    "gotoeat": "npx codeceptjs run src/apply_ipo_test.js",
     "test": "test"
   },
   "repository": {

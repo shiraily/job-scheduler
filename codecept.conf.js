@@ -1,3 +1,4 @@
+require('dotenv').config();
 const { setHeadlessWhen } = require('@codeceptjs/configure');
 
 // turn on headless mode when running with HEADLESS=true environment variable
@@ -5,7 +6,7 @@ const { setHeadlessWhen } = require('@codeceptjs/configure');
 setHeadlessWhen(process.env.HEADLESS);
 
 exports.config = {
-  tests: 'src/*_test.js',
+  tests: 'src/*.js',
   output: './output',
   helpers: {
     Puppeteer: {
@@ -18,6 +19,11 @@ exports.config = {
     I: './steps_file.js'
   },
   bootstrap: null,
+  multiple: {
+    parallel: {
+      chunks: 2,
+    }
+  },
   mocha: {},
   name: 'job-scheduler',
   plugins: {
