@@ -1,0 +1,5 @@
+cron:
+- description: Apply IPO on SBI Securities
+  url: /apply-ipo
+  schedule: every day 0:30
+  timezone: Asia/Tokyo

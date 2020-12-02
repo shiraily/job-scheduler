@@ -4,9 +4,9 @@
   "description": "Job scheduler for daily life",
   "main": "index.js",
   "scripts": {
-    "ipo": "npx codeceptjs run-multiple parallel --grep ipo",
-    "gotoeat": "npx codeceptjs run-multiple parallel --grep gotoeat",
-    "test": "test"
+    "build": "babel src -d ./dist/",
+    "start": "node dist/app.js",
+    "test": "babel src -d ./dist/ && export $(cat .env | grep -v ^# | xargs) && node dist/apply_ipo.js"
   },
   "repository": {
     "type": "git",
@@ -19,8 +19,13 @@
   },
   "homepage": "https://github.com/shiraily/job-scheduler#readme",
   "dependencies": {
-    "codeceptjs": "^3.0.2",
+    "@babel/cli": "^7.12.8",
+    "@babel/core": "^7.12.9",
+    "@babel/node": "^7.12.6",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.12.7",
     "dotenv": "^8.2.0",
+    "express": "^4.17.1",
     "puppeteer": "^5.5.0"
   },
   "devDependencies": {
