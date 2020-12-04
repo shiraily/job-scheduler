@@ -1,12 +1,38 @@
 # job-scheduler
 
-Personal job scheduler
+Personal job scheduler to operate browsers
+
+# Jobs
+
+- Apply IPO of SBI securities daily
+- (wip) Apply Go To Eat Tokyo
+
+# Requirements
+
+- GCP project
+- node.js
 
 # Init
 
+### Install
+
+```
+cd /path/to/repo
+npm i
+```
+
+### Commands
+
+Setup .env file then start app
+
+```
+npm run build
+npm run start
+```
+
 ### Firewall
 
-only allow api call from cron job
+Only allow api call from cron job
 https://cloud.google.com/appengine/docs/flexible/nodejs/scheduling-jobs-with-cron-yaml#validating_cron_requests
 
 ```
