@@ -4,9 +4,11 @@ import puppeteer from "puppeteer";
 const unit = 100;
 
 // TODO do not use waitForTimeout
-const _apply = (browser) => {
+const _apply = async (browser) => {
+  console.log("start applying IPO");
   const page = await browser.newPage();
   page.setViewport({width: 1280, height: 720});
+  console.log("succeeded to launch browser");
   await page.goto("https://www.sbisec.co.jp/");
   await page.type("input[name=user_id]", process.env.SBI_USERNAME);
   await page.type("input[name=user_password]", process.env.SBI_PASSWORD);
@@ -21,7 +23,7 @@ const _apply = (browser) => {
     let canApply = true;
     await page.click("img[alt=申込]").catch( () => {canApply = false;});
     if (!canApply) {
-      console.log("no BB");
+      console.log("no more BB");
       break;
     };
     await page.waitForTimeout(1000);
@@ -33,6 +35,7 @@ const _apply = (browser) => {
     await page.waitForTimeout(1000);
 
     await page.click("input[name=order_btn]");
+    console.log(`apply ${n}`);
     n += 1;
   }
 }
@@ -41,11 +44,19 @@ const _apply = (browser) => {
 export const applyIPO = async () => {
   const browser = await puppeteer.launch(
     {
-      headless: false,
+      args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '-–disable-dev-shm-usage',
+        '--disable-gpu',
+        '--no-first-run',
+        '--no-zygote',
+        '--single-process',
+      ],
     }
   );
   try {
-    _apply(browser);
+    await _apply(browser);
   } finally {
     browser.close();
   }

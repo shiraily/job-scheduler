@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "babel src -d ./dist/",
-    "start": "node dist/app.js",
-    "test": "babel src -d ./dist/ && export $(cat .env | grep -v ^# | xargs) && node dist/apply_ipo.js"
+    "test": "node dist/app.js",
+    "start": "export $(cat .env | grep -v ^# | xargs) && node dist/app.js"
   },
   "repository": {
     "type": "git",
