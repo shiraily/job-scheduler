@@ -12,12 +12,15 @@ const app = express();
 app.get('/apply-ipo', (_, res, next) => {
   console.log("requested");
   applyIPO().then(
-    () => res.status(200).send('OK').end()
+    () => {
+      res.status(200).send('OK').end();
+      SERVER.close();
+    }
   ).catch(next);
 });
 
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
+const PORT = process.env.PORT || 8000;
+const SERVER = app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
   console.log('Press Ctrl+C to quit.');
 });
