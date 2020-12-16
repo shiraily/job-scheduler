@@ -57,6 +57,8 @@ export const applyIPO = async () => {
   );
   try {
     await _apply(browser);
+  } catch(e) {
+    console.log("error", e);
   } finally {
     browser.close();
   }

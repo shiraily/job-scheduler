@@ -4,8 +4,7 @@ Personal job scheduler to operate browsers
 
 # Jobs
 
-- Apply IPO of SBI securities daily
-- (wip) Apply Go To Eat Tokyo
+- SBI証券サイトでのIPO自動申し込み
 
 # Requirements
 
