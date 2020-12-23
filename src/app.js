@@ -2,6 +2,7 @@
 
 import express from "express";
 import { applyIPO } from "./apply_ipo";
+import { detectHaraMuseumCancel } from "./detect_hara_museum_cancel";
 
 // TODO
 import dotenv from "dotenv";
@@ -12,6 +13,16 @@ const app = express();
 app.get('/apply-ipo', (_, res, next) => {
   console.log("requested");
   applyIPO().then(
+    () => {
+      res.status(200).send('OK').end();
+      SERVER.close();
+    }
+  ).catch(next);
+});
+
+app.get('/detect-hara-museum-cancel', (_, res, next) => {
+  console.log("requested");
+  detectHaraMuseumCancel().then(
     () => {
       res.status(200).send('OK').end();
       SERVER.close();

@@ -3,3 +3,7 @@ cron:
   url: /apply-ipo
   schedule: every day 0:30
   timezone: Asia/Tokyo
+- description: Detect Hara Museum cancel
+  url: /detect-hara-museum-cancel
+  schedule: every  5 minutes
+  timezone: Asia/Tokyo

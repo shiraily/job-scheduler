@@ -2,9 +2,10 @@
 
 Personal job scheduler to operate browsers
 
-# Jobs
+# Regular Jobs
 
-- SBI証券サイトでのIPO自動申し込み
+- SBI証券サイトでのIPO申し込み
+- 原美術館のキャンセルチェック
 
 # Requirements
 
