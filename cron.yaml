@@ -3,6 +3,10 @@ cron:
   url: /apply-ipo
   schedule: every day 0:30
   timezone: Asia/Tokyo
+- description: Entry of Shinsei Bank point program
+  url: /entry-shinsei-bank
+  schedule: 1 of month 11:00
+  timezone: Asia/Tokyo
 # - description: Detect Hara Museum cancel
 #   url: /detect-hara-museum-cancel
 #   schedule: every  5 minutes

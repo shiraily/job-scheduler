@@ -2,6 +2,7 @@
 
 import express from "express";
 import { applyIPO } from "./apply_ipo";
+import { inputShinseiBankEntry } from "./entry_shinsei_bank";
 import { detectHaraMuseumCancel } from "./detect_hara_museum_cancel";
 
 // TODO
@@ -13,6 +14,16 @@ const app = express();
 app.get('/apply-ipo', (_, res, next) => {
   console.log("requested");
   applyIPO().then(
+    () => {
+      res.status(200).send('OK').end();
+      SERVER.close();
+    }
+  ).catch(next);
+});
+
+app.get('/entry-shinsei-bank', (_, res, next) => {
+  console.log("requested");
+  inputShinseiBankEntry().then(
     () => {
       res.status(200).send('OK').end();
       SERVER.close();
