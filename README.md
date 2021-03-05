@@ -6,6 +6,7 @@ Personal job scheduler to operate browsers
 
 - SBI証券サイトでのIPO申し込み
 - 原美術館のキャンセルチェック
+- 新生銀行のポイントプログラムエントリー
 
 # Requirements
 
