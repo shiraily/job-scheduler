@@ -17,17 +17,23 @@ const _apply = async (browser) => {
 
   let n = 0;
   while (n < 5) {
-    await page.waitForTimeout(1000);
-    await page.goto("https://m.sbisec.co.jp/oeliw011?type=21");
-    await page.waitForTimeout(1000);
+    await page.waitForSelector("img", {timeout: 5000});
+    await page.goto("https://m.sbisec.co.jp/oeliw011?type=21", { waitUntil: "domcontentloaded" });
+
     let canApply = true;
-    await page.click("img[alt=申込]").catch( () => {canApply = false;});
+    await page.waitForSelector("img[alt=申込]", {timeout: 5000}).catch((e) => {
+      if (!(e instanceof puppeteer.errors.TimeoutError)) {
+        console.error(e);
+      }
+      canApply = false;
+    });
     if (!canApply) {
       console.log("no more BB");
       break;
     };
-    await page.waitForTimeout(1000);
+    await page.click("img[alt=申込]");
 
+    await page.waitForSelector("input[name=suryo]", {timeout: 5000});
     await page.type("input[name=suryo]", unit.toString());
     await page.click("#strPriceRadio");
     await page.type("input[name=tr_pass]", process.env.SBI_TRADE_PASSWORD);
