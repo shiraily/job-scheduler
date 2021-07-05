@@ -49,8 +49,8 @@ gcloud app firewall-rules create 2 \
 # Deploy
 
 ```
-gcloud app deploy --version=1
-gcloud app deploy cron.yaml
+gcloud app deploy --version=1 --quiet
+gcloud app deploy cron.yaml --quiet
 ```
 
 # TODO
