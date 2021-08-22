@@ -1,12 +1,17 @@
 # job-scheduler
 
-Personal job scheduler to operate browsers
+Personal job scheduler automating some operations on browser.
 
-# Regular Jobs
+# Jobs
+
+### Regular
 
 - SBI証券サイトでのIPO申し込み
-- 原美術館のキャンセルチェック
 - 新生銀行のポイントプログラムエントリー
+
+### Unused
+
+- 原美術館のキャンセルチェック
 
 # Requirements
 
