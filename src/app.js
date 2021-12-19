@@ -5,7 +5,6 @@ import { applyIPO } from "./apply_ipo";
 import { inputShinseiBankEntry } from "./entry_shinsei_bank";
 import { detectHaraMuseumCancel } from "./detect_hara_museum_cancel";
 
-// TODO
 import dotenv from "dotenv";
 dotenv.config();
 

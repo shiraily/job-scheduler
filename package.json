@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel src -d ./dist/",
     "test": "node dist/app.js",
-    "start": "export $(cat .env | grep -v ^# | xargs) && node dist/app.js"
+    "start": "node dist/app.js"
   },
   "repository": {
     "type": "git",
