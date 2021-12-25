@@ -17,6 +17,7 @@ Personal job scheduler automating some operations on browser.
 
 - GCP project
 - node.js
+- yarn
 
 # Init
 
@@ -24,7 +25,7 @@ Personal job scheduler automating some operations on browser.
 
 ```
 cd /path/to/repo
-npm i
+yarn
 ```
 
 ### Commands
@@ -32,8 +33,8 @@ npm i
 Setup .env file then start app
 
 ```
-npm run build
-npm run start
+yarn build
+yarn start
 ```
 
 ### Firewall
