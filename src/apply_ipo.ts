@@ -59,6 +59,7 @@ export const applyIPO = async () => {
         '--no-zygote',
         '--single-process',
       ],
+      headless: false,
     }
   );
   try {
