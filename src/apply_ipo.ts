@@ -1,4 +1,5 @@
 import puppeteer from "puppeteer";
+import { getBrowser } from "./common/puppeteer";
 
 /** 取引単位（株） */
 const unit = 100;
@@ -46,22 +47,9 @@ const _apply = async (browser) => {
   }
 }
 
-// TODO use Secret Manager instead of dotenv
+// TODO use template method
 export const applyIPO = async () => {
-  const browser = await puppeteer.launch(
-    {
-      args: [
-        '--no-sandbox',
-        '--disable-setuid-sandbox',
-        '-–disable-dev-shm-usage',
-        '--disable-gpu',
-        '--no-first-run',
-        '--no-zygote',
-        '--single-process',
-      ],
-      headless: false,
-    }
-  );
+  const browser = await getBrowser();
   try {
     await _apply(browser);
   } catch(e) {

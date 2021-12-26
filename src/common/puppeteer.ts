@@ -1,6 +1,7 @@
 import puppeteer from "puppeteer";
+import { headless } from "./constant";
 
-export const getBrowser = async () => {
+export async function getBrowser(): Promise<puppeteer.Browser> {
   return await puppeteer.launch(
     {
       args: [
@@ -12,6 +13,7 @@ export const getBrowser = async () => {
         '--no-zygote',
         '--single-process',
       ],
+      headless,
     }
   );
 }
