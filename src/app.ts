@@ -1,44 +1,32 @@
 'use strict';
 
 import express from "express";
-import { applyIPO } from "./apply_ipo";
-import { inputShinseiBankEntry } from "./entry_shinsei_bank";
-import { detectHaraMuseumCancel } from "./detect_hara_museum_cancel";
-
+import { JobHandler } from "./job/handler";
+import { ShinseiBankEntry } from "./job/entryShinseiBank";
+import { IPOApplication } from "./job/applyIPO";
 import dotenv from "dotenv";
+
 dotenv.config();
 
 const app = express();
 
-app.get('/apply-ipo', (_, res, next) => {
-  console.log("requested");
-  applyIPO().then(
-    () => {
-      res.status(200).send('OK').end();
-      SERVER.close();
-    }
-  ).catch(next);
-});
+const jobs: [path: string, job: JobHandler][] = [
+  ["apply-ipo", new IPOApplication()],
+  ["entry-shinsei-bank", new ShinseiBankEntry()],
+];
 
-app.get('/entry-shinsei-bank', (_, res, next) => {
-  console.log("requested");
-  inputShinseiBankEntry().then(
-    () => {
-      res.status(200).send('OK').end();
-      SERVER.close();
-    }
-  ).catch(next);
-});
-
-app.get('/detect-hara-museum-cancel', (_, res, next) => {
-  console.log("requested");
-  detectHaraMuseumCancel().then(
-    () => {
-      res.status(200).send('OK').end();
-      SERVER.close();
-    }
-  ).catch(next);
-});
+jobs.forEach(([path, job]) => {
+  app.get(`/${path}`, (_, res, next) => {
+    console.log(`requested: ${path}`);
+    job.setup(job.constructor.name);
+    job.handle().then(
+      () => {
+        res.status(200).send('OK').end();
+        SERVER.close();
+      }
+    ).catch(next);
+  });
+})
 
 const PORT = process.env.PORT || 8000;
 const SERVER = app.listen(PORT, () => {
