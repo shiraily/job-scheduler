@@ -61,6 +61,4 @@ gcloud app deploy cron.yaml --quiet
 
 # TODO
 
-* use dotenv
-
-etc...
+use secret manager for credential info
