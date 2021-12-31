@@ -7,13 +7,13 @@ import nodeExternals from "webpack-node-externals";
 const config: Configuration = {
   mode: "development",
   devtool: 'inline-source-map', // source-mapだと警告が邪魔
-  entry: './src/app.ts',
+  entry: path.join(__dirname, './src/app.ts'),
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[name].js',
+    filename: 'bundle.js',
   },
   resolve: {
-    extensions: [".ts", ".js"],
+    extensions: [".ts"],
     modules: ["node_modules"],
   },
   module: {  

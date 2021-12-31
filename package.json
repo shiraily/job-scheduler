@@ -2,11 +2,10 @@
   "name": "job-scheduler",
   "version": "1.0.0",
   "description": "Job scheduler for daily life",
-  "main": "./src/app.js",
   "scripts": {
     "build": "webpack",
-    "dev": "NODE_ENV=development nodemon",
-    "start": "node dist/main.js"
+    "start": "node dist/bundle.js",
+    "dev": "NODE_ENV=development nodemon"
   },
   "repository": {
     "type": "git",
