@@ -5,7 +5,9 @@
   "scripts": {
     "build": "webpack",
     "start": "node dist/bundle.js",
-    "dev": "NODE_ENV=development nodemon"
+    "dev": "NODE_ENV=development nodemon",
+    "lint": "eslint .",
+    "format": "prettier --write ."
   },
   "repository": {
     "type": "git",
@@ -26,6 +28,10 @@
     "@types/express": "^4.17.13",
     "@types/node": "^17.0.5",
     "@types/puppeteer": "^5.4.4",
+    "@typescript-eslint/eslint-plugin": "^5.8.1",
+    "@typescript-eslint/parser": "^5.8.1",
+    "eslint": "^8.5.0",
+    "eslint-config-prettier": "^8.3.0",
     "nodemon": "^2.0.15",
     "prettier": "^2.5.1",
     "ts-loader": "^9.2.6",

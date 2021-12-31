@@ -1,5 +1,4 @@
-// deprecated
-
+/* eslint @typescript-eslint/no-unused-vars: 0 */
 const _apply = async (browser) => {
   console.log("start detecting Hara Museum cancel");
   const page = await browser.newPage();
@@ -25,7 +24,7 @@ const _apply = async (browser) => {
 
 const getAvailableDays = async (page) => {
   const querySelector = "td.day:not(.disabled)";
-  var elements = await page.evaluate((selector) => {
+  const elements = await page.evaluate((selector) => {
     const list = Array.from(document.querySelectorAll(selector));
     return list.map((data) => data.textContent);
   }, querySelector);
