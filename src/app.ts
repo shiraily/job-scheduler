@@ -13,6 +13,8 @@ const app = express();
 const jobs: [path: string, job: JobHandler][] = [
   ["apply-ipo", new IPOApplication()],
   ["entry-shinsei-bank", new ShinseiBankEntry()],
+  // TODO just login to Shinsei Bank
+  // TODO apply CrowdBank Fund
 ];
 
 jobs.forEach(([path, job]) => {

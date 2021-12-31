@@ -4,6 +4,9 @@ import { JobHandler } from "./handler";
 /** 取引単位（株） */
 const unit = 100;
 
+/**
+ * IPO申し込みをすることでIPOチャレンジポイントを取得する
+ */
 export class IPOApplication extends JobHandler {
   async operate(): Promise<string> {
     console.log("start applying IPO");

@@ -1,5 +1,8 @@
 import { JobHandler } from "./handler";
 
+/**
+ * 新生銀行のポイントプログラムエントリー (Tポイント)
+ */
 export class ShinseiBankEntry extends JobHandler {
   async operate(): Promise<string> {
     console.log("start inputting Shinsei Bank entry");
