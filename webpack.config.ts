@@ -1,13 +1,8 @@
-import { Configuration as WebpackConfiguration } from "webpack";
-import { Configuration as WebpackDevServerConfiguration } from "webpack-dev-server";
+import { Configuration } from "webpack";
 
 import path from "path";
 
 import nodeExternals from "webpack-node-externals";
-
-interface Configuration extends WebpackConfiguration {
-  devServer?: WebpackDevServerConfiguration;
-}
 
 const config: Configuration = {
   mode: "development",
@@ -31,9 +26,6 @@ const config: Configuration = {
   },
   target: "node",
   externals: [nodeExternals()],
-  devServer: {
-    port: 8000,
-  },
 };
 
 export default config;
