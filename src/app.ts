@@ -2,7 +2,7 @@
 
 import express from "express";
 import { JobHandler } from "./job/handler";
-import { ShinseiBankEntry } from "./job/entryShinseiBank";
+import { ShinseiBankEntry } from "./job/shinseiBankEntry";
 import { IPOApplication } from "./job/applyIPO";
 import dotenv from "dotenv";
 
