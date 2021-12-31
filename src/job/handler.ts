@@ -17,7 +17,7 @@ export abstract class JobHandler {
     let msg = "";
     try {
       msg = await this.operate();
-    } catch(e) {
+    } catch (e) {
       msg = `失敗しました。 job=${this.jobName}, ${e}`;
       console.log("error", e);
     }
@@ -26,8 +26,8 @@ export abstract class JobHandler {
 
   private async createNewPage() {
     const browser = await getBrowser();
-    this.page = await browser.newPage();   
-    this.page.setViewport({width: 1280, height: 720});
+    this.page = await browser.newPage();
+    this.page.setViewport({ width: 1280, height: 720 });
   }
 
   abstract operate(): Promise<string>;
@@ -35,28 +35,32 @@ export abstract class JobHandler {
   notify(text: string) {
     if (!text) return;
 
-    const data = JSON.stringify({username: "bot", icon_emoji: ":ghost:", text});  
+    const data = JSON.stringify({
+      username: "bot",
+      icon_emoji: ":ghost:",
+      text,
+    });
     const options = {
-        hostname: 'hooks.slack.com',
-        port: 443,
-        path: process.env.SLACK_WEBHOOK,
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Content-Length': Buffer.byteLength(data)
-        }
+      hostname: "hooks.slack.com",
+      port: 443,
+      path: process.env.SLACK_WEBHOOK,
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Content-Length": Buffer.byteLength(data),
+      },
     };
-    const req = https.request(options, (res) =>{
-      if(res.statusCode===200){
-          console.log("OK:"+res.statusCode);
-      }else{
-          console.log("Status Error:"+res.statusCode);
+    const req = https.request(options, (res) => {
+      if (res.statusCode === 200) {
+        console.log("OK:" + res.statusCode);
+      } else {
+        console.log("Status Error:" + res.statusCode);
       }
     });
-    req.on('error',(e)=>{
-        console.error(e);
+    req.on("error", (e) => {
+      console.error(e);
     });
-  
+
     req.write(data);
     req.end();
   }

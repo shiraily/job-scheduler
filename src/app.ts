@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 import express from "express";
 import { JobHandler } from "./job/handler";
@@ -19,19 +19,20 @@ jobs.forEach(([path, job]) => {
   app.get(`/${path}`, (_, res, next) => {
     console.log(`requested: ${path}`);
     job.setup(job.constructor.name);
-    job.handle().then(
-      () => {
-        res.status(200).send('OK').end();
+    job
+      .handle()
+      .then(() => {
+        res.status(200).send("OK").end();
         SERVER.close();
-      }
-    ).catch(next);
+      })
+      .catch(next);
   });
-})
+});
 
 const PORT = process.env.PORT || 8000;
 const SERVER = app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
-  console.log('Press Ctrl+C to quit.');
+  console.log("Press Ctrl+C to quit.");
 });
 
 module.exports = app;

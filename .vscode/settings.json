@@ -1,11 +1,8 @@
 {
-    "editor.tabSize": 2,
-    "editor.detectIndentation": false,
-    "files.exclude": {
-      "./dist/**/*": true
-    },
-    "cSpell.words": [
-      "SHINSEI"
-    ]
-
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "files.exclude": {
+    "./dist/**/*": true
+  },
+  "cSpell.words": ["SHINSEI"]
 }
