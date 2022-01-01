@@ -37,7 +37,9 @@ export class TransferFromSumishin extends JobHandler {
       (await this.page.$x(xpath))[0].click();
 
       // 振込確認・実行
-      await (await this.page.waitForSelector("input[id=tfrAmt0]")).type("1000");
+      await (
+        await this.page.waitForSelector("input[id=tfrAmt0]")
+      ).type("10000");
       (await this.contains("span", "確認する")).click();
       (await this.contains("span", "確定する")).click();
       n += 1;
