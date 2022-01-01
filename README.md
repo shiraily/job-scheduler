@@ -8,6 +8,7 @@ Personal job scheduler automating some operations on browser.
 
 - SBI証券サイトでのIPO申し込み
 - 新生銀行のポイントプログラムエントリー
+- 住信SBIネット銀行からの連続振込
 
 ### Unused
 
@@ -16,7 +17,7 @@ Personal job scheduler automating some operations on browser.
 # Requirements
 
 - GCP project
-- node.js
+- Node.js
 - yarn
 
 # Init
@@ -30,11 +31,19 @@ yarn
 
 ### Commands
 
-Setup .env file then start app
+Need to setup .env file.
+
+for production test:
 
 ```
 yarn build
 yarn start
+```
+
+for local:
+
+```
+yarn dev
 ```
 
 ### Firewall
@@ -54,10 +63,8 @@ gcloud app firewall-rules create 2 \
 
 # Deploy
 
-```
-gcloud app deploy --version=1 --quiet
-gcloud app deploy cron.yaml --quiet
-```
+- Deploy app: `make deploy`
+- Deploy cron: `make cron`
 
 # TODO
 
