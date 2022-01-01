@@ -6,5 +6,5 @@
   "files.exclude": {
     "./dist/**/*": true
   },
-  "cSpell.words": ["SHINSEI"]
+  "cSpell.words": ["shinsei", "sumishin"]
 }

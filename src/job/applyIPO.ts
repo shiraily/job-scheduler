@@ -13,7 +13,6 @@ export class IPOApplication extends JobHandler {
     await this.page.goto("https://www.sbisec.co.jp/");
     await this.page.type("input[name=user_id]", process.env.SBI_USERNAME);
     await this.page.type("input[name=user_password]", process.env.SBI_PASSWORD);
-
     await this.page.click("input[name=ACT_login]");
 
     let n = 0;

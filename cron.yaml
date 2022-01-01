@@ -7,7 +7,7 @@ cron:
     url: /entry-shinsei-bank
     schedule: 1 of month 11:00
     timezone: Asia/Tokyo
-# - description: Detect Hara Museum cancel
-#   url: /detect-hara-museum-cancel
-#   schedule: every  5 minutes
-#   timezone: Asia/Tokyo
+  - description: Transfer to an account repeatedly until 15:00
+    url: /transfer-from-sumishin
+    schedule: 26 of month 10:00
+    timezone: Asia/Tokyo

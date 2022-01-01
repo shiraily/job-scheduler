@@ -1,21 +1,12 @@
 "use strict";
 
 import express from "express";
-import { JobHandler } from "./job/handler";
-import { ShinseiBankEntry } from "./job/shinseiBankEntry";
-import { IPOApplication } from "./job/applyIPO";
 import dotenv from "dotenv";
+import { jobs } from "./job/jobs";
 
 dotenv.config();
 
 const app = express();
-
-const jobs: [path: string, job: JobHandler][] = [
-  ["apply-ipo", new IPOApplication()],
-  ["entry-shinsei-bank", new ShinseiBankEntry()],
-  // TODO just login to Shinsei Bank
-  // TODO apply CrowdBank Fund
-];
 
 jobs.forEach(([path, job]) => {
   app.get(`/${path}`, (_, res, next) => {

@@ -1,5 +1,5 @@
 import https from "https";
-import { Browser, Page } from "puppeteer";
+import { Browser, Page, ElementHandle } from "puppeteer";
 import { getBrowser } from "../common/puppeteer";
 
 export abstract class JobHandler {
@@ -20,17 +20,30 @@ export abstract class JobHandler {
     } catch (e) {
       msg = `失敗しました。 job=${this.jobName}, ${e}`;
       console.log("error", e);
+    } finally {
+      this.browser.close();
     }
     this.notify(msg);
   }
 
   private async createNewPage() {
-    const browser = await getBrowser();
-    this.page = await browser.newPage();
+    this.browser = await getBrowser();
+    this.page = await this.browser.newPage();
     this.page.setViewport({ width: 1280, height: 720 });
   }
 
   abstract operate(): Promise<string>;
+
+  // TODO 類似メソッドが増えたら再設計
+  async contains(
+    element: string,
+    text: string,
+    index = 0
+  ): Promise<ElementHandle<Element>> {
+    const xpath = `//${element}[text() = "${text}"]`;
+    await this.page.waitForXPath(xpath);
+    return (await this.page.$x(xpath))[index];
+  }
 
   notify(text: string) {
     if (!text) return;
