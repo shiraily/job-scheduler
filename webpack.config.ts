@@ -5,7 +5,9 @@ import path from "path";
 import nodeExternals from "webpack-node-externals";
 
 const config: Configuration = {
-  mode: "development",
+  optimization: {
+    minimize: false,
+  },
   devtool: "inline-source-map", // source-mapだと警告が邪魔
   entry: path.join(__dirname, "./src/app.ts"),
   output: {

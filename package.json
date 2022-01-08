@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Job scheduler for daily life",
   "scripts": {
-    "build": "webpack",
+    "build": "yarn gcp-build",
+    "gcp-build": "webpack --node-env production",
     "start": "node dist/bundle.js",
     "dev": "NODE_ENV=development nodemon",
     "lint": "eslint .",
