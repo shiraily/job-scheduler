@@ -43,7 +43,11 @@ yarn start
 for local:
 
 ```
+# run app
 yarn dev
+
+# debug each job
+yarn debug apply-ipo
 ```
 
 ### Firewall

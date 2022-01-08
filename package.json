@@ -6,6 +6,7 @@
     "build": "yarn gcp-build",
     "gcp-build": "webpack --node-env production",
     "start": "node dist/bundle.js",
+    "debug": "NODE_ENV=development ts-node src/command/command.ts",
     "dev": "NODE_ENV=development nodemon",
     "lint": "eslint .",
     "format": "prettier --write ."
