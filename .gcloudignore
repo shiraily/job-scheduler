@@ -8,3 +8,6 @@
 # Node.js
 /dist/
 /node_modules/
+
+# App Engine
+/client_secret.json

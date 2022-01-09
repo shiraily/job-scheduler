@@ -22,7 +22,15 @@ Personal job scheduler automating some operations on browser.
 
 # Init
 
-### Install
+### Setup
+
+GCP:
+
+```
+gcloud services enable sheets.googleapis.com
+```
+
+install:
 
 ```
 cd /path/to/repo

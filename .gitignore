@@ -22,6 +22,7 @@
 ### AppEngine ###
 # Google App Engine generated folder
 appengine-generated/
+/client_secret.json
 
 ### Node ###
 # Logs
