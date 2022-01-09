@@ -1,25 +1,21 @@
 "use strict";
 
-import dotenv from "dotenv";
 import { google, Auth } from "googleapis";
 import { CredentialBody } from "google-auth-library";
 import clientSecret from "../../client_secret.json";
 
-dotenv.config();
+export function getClient() {
+  const SCOPES = ["https://www.googleapis.com/auth/spreadsheets"];
+  const credentials = clientSecret as CredentialBody;
 
-const SCOPES = ["https://www.googleapis.com/auth/spreadsheets"];
-
-const credentials = clientSecret as CredentialBody;
-
-const client = new google.auth.JWT(
-  credentials.client_email,
-  null,
-  credentials.private_key,
-  SCOPES,
-  null
-);
-
-write(client, ["1", "2", "3", "4", "5", "6"]);
+  return new google.auth.JWT(
+    credentials.client_email,
+    null,
+    credentials.private_key,
+    SCOPES,
+    null
+  );
+}
 
 /**
  * sample code to list google sheet range
@@ -46,18 +42,22 @@ export function listMajors(auth: Auth.OAuth2Client) {
   );
 }
 
+const numHeaderRow = 1;
+
 /**
  * write row to google sheet
  */
-export function write(auth: Auth.OAuth2Client, row: string[]) {
-  const sheets = google.sheets({ version: "v4", auth });
-  sheets.spreadsheets.values.update(
+export function write(auth: Auth.OAuth2Client, values: string[][]) {
+  const lastRow = values.length + numHeaderRow;
+  const lastCol = String.fromCharCode(values[0].length + "A".charCodeAt(0));
+
+  google.sheets({ version: "v4", auth }).spreadsheets.values.update(
     {
       spreadsheetId: process.env.SPREADSHEET_ID,
-      range: "CrowdBank!A1:F1",
+      range: `CrowdBank!A${numHeaderRow + 1}:${lastCol}${lastRow}`,
       valueInputOption: "USER_ENTERED",
       requestBody: {
-        values: [row],
+        values,
       },
     },
     (err, res) => {
@@ -66,3 +66,8 @@ export function write(auth: Auth.OAuth2Client, row: string[]) {
     }
   );
 }
+
+/*write(getClient(), [
+  ["1", "2", "3", "4", "5", "6"],
+  ["1", "2", "3", "4", "5", "6"],
+]);*/
