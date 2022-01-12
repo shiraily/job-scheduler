@@ -11,18 +11,23 @@ const fields = [
   ".fund-list-item__text.fund-list-item__text--small.fund-list-item__text--block",
 ];
 
-/**
- * CrowdBankで募集中のファンド一覧を取得する
- */
-export class ListCrowdBankFunds extends JobHandler {
-  async operate(): Promise<string> {
+abstract class CrowdBankFundsJobHandler extends JobHandler {
+  async showApplicableFunds() {
     const urlParam =
       process.env.NODE_ENV !== "development"
         ? "?word=&region=all&project=all&status=21&page=1&direction=desc"
         : "";
     this.page.goto(`https://crowdbank.jp/funds/search/${urlParam}`);
     await setTimeout(3000);
-    console.log("starting...");
+  }
+}
+
+/**
+ * CrowdBankで募集中のファンド一覧を取得して通知する
+ */
+export class CrowdBankFundsNotifier extends CrowdBankFundsJobHandler {
+  async operate(): Promise<string> {
+    this.showApplicableFunds();
 
     const data = [];
     for (const li of await this.page.$$(".fund-list-items li")) {
@@ -38,5 +43,16 @@ export class ListCrowdBankFunds extends JobHandler {
 
     write(getClient(), data);
     return `募集中のファンドがありました!`;
+  }
+}
+
+/**
+ * CrowdBankでファンドへ申し込みする
+ */
+export class CrowdBankFundsApplicant extends CrowdBankFundsJobHandler {
+  async operate(): Promise<string> {
+    this.showApplicableFunds();
+    // TODO
+    return;
   }
 }
