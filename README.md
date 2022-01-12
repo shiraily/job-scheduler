@@ -55,7 +55,7 @@ for local:
 yarn dev
 
 # debug each job
-yarn debug apply-ipo
+yarn debug apply-for-ipo
 ```
 
 ### Firewall
