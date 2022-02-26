@@ -9,5 +9,5 @@ cron:
     timezone: Asia/Tokyo
   - description: Transfer to an account repeatedly until 15:00
     url: /transfer-from-sumishin
-    schedule: 26 of month 10:00
+    schedule: 25 of month 18:00
     timezone: Asia/Tokyo
