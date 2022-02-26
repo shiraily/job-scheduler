@@ -6,6 +6,7 @@ export abstract class JobHandler {
   private jobName: string;
   protected browser: Browser;
   protected page: Page;
+  result: string | Buffer = "OK";
 
   // constructor cannot refer to concrete class name
   setup(jobName: string) {
@@ -19,6 +20,7 @@ export abstract class JobHandler {
       msg = await this.operate();
     } catch (e) {
       msg = `失敗しました。 job=${this.jobName}, ${e}`;
+      this.result = await this.page.screenshot();
       console.log("error", e);
     } finally {
       await this.browser.close();

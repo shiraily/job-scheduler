@@ -15,7 +15,14 @@ jobs.forEach(([path, job]) => {
     job
       .handle()
       .then(() => {
-        res.status(200).send("OK").end();
+        res
+          .set(
+            "Content-Type",
+            typeof job.result === "string" ? "text/plain" : "image/png"
+          )
+          .status(200)
+          .send(job.result)
+          .end();
         SERVER.close();
       })
       .catch(next);
