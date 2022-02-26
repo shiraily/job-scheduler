@@ -21,7 +21,7 @@ export abstract class JobHandler {
       msg = `失敗しました。 job=${this.jobName}, ${e}`;
       console.log("error", e);
     } finally {
-      this.browser.close();
+      await this.browser.close();
     }
     this.notify(msg);
   }
