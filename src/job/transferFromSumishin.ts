@@ -1,3 +1,4 @@
+//import { TimeoutError } from "puppeteer";
 import { setTimeout } from "timers/promises";
 import { JobHandler } from "./handler";
 
@@ -5,7 +6,8 @@ export class TransferFromSumishin extends JobHandler {
   async operate(): Promise<string> {
     // login
     await this.page.goto(
-      "https://www.netbk.co.jp/contents/pages/wpl010101/i010101CT/DI01010210"
+      "https://www.netbk.co.jp/contents/pages/wpl010101/i010101CT/DI01010210",
+      { timeout: 900000 } // sometimes fails
     );
     await this.page.type("input[name=userName]", process.env.SUMISHIN_USERNAME);
     await this.page.type(
@@ -13,6 +15,7 @@ export class TransferFromSumishin extends JobHandler {
       process.env.SUMISHIN_PASSWORD
     );
     await this.page.click("button[type=submit]");
+    console.log("login done");
 
     // 他行宛振込回数取得
     await setTimeout(2000);
