@@ -10,8 +10,8 @@ const unit = 100;
 export class IPOApplication extends JobHandler {
   async operate(): Promise<string> {
     console.log("start applying IPO");
-    await this.page.goto("https://www.sbisec.co.jp/");
-    await this.page.type("input[name=user_id]", process.env.SBI_USERNAME);
+    await this.goto("https://www.sbisec.co.jp/");
+    await this.waitForType("input[name=user_id]", process.env.SBI_USERNAME);
     await this.page.type("input[name=user_password]", process.env.SBI_PASSWORD);
     await this.page.click("input[name=ACT_login]");
 

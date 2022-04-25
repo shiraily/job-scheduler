@@ -5,17 +5,18 @@ import { JobHandler } from "./handler";
 export class TransferFromSumishin extends JobHandler {
   async operate(): Promise<string> {
     // login
-    await this.page.goto(
-      "https://www.netbk.co.jp/contents/pages/wpl010101/i010101CT/DI01010210",
-      { timeout: 900000 } // sometimes fails
+    await this.goto(
+      "https://www.netbk.co.jp/contents/pages/wpl010101/i010101CT/DI01010210"
     );
-    await this.page.type("input[name=userName]", process.env.SUMISHIN_USERNAME);
+    await this.waitForType(
+      "input[name=userName]",
+      process.env.SUMISHIN_USERNAME
+    );
     await this.page.type(
       "input[id=loginPwdSet]",
       process.env.SUMISHIN_PASSWORD
     );
     await this.page.click("button[type=submit]");
-    console.log("login done");
 
     // 他行宛振込回数取得
     await setTimeout(2000);
@@ -25,6 +26,7 @@ export class TransferFromSumishin extends JobHandler {
       )
     ).evaluate((el) => el.textContent);
     const remainTransfer = Math.min(parseInt(text) || 0, 4);
+    console.log("remaining transfer:", remainTransfer);
 
     let n = 0;
     while (n < remainTransfer) {

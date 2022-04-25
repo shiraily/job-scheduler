@@ -1,5 +1,5 @@
 import https from "https";
-import { Browser, Page, ElementHandle } from "puppeteer";
+import { Browser, Page, ElementHandle, errors } from "puppeteer";
 import { getBrowser } from "../common/puppeteer";
 
 export abstract class JobHandler {
@@ -45,6 +45,20 @@ export abstract class JobHandler {
     const xpath = `//${element}[text() = "${text}"]`;
     await this.page.waitForXPath(xpath);
     return (await this.page.$x(xpath))[index];
+  }
+
+  async goto(url: string) {
+    try {
+      await this.page.goto(url, { timeout: 1_000 });
+    } catch (e) {
+      if (!(e instanceof errors.TimeoutError)) {
+        throw e;
+      }
+    }
+  }
+
+  async waitForType(selector: string, text: string) {
+    await (await this.page.waitForSelector(selector)).type(text);
   }
 
   notify(text: string) {

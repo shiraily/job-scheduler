@@ -6,10 +6,10 @@ import { JobHandler } from "./handler";
 export class ShinseiBankEntry extends JobHandler {
   async operate(): Promise<string> {
     console.log("start inputting Shinsei Bank entry");
-    await this.page.goto(
+    await this.goto(
       "https://webform.shinseibank.com/webapp/form/19913_xldb_4/index.do?lid=p"
     );
-    await this.page.type("#fi_account_num", process.env.SHINSEI_ACCOUNT);
+    await this.waitForType("#fi_account_num", process.env.SHINSEI_ACCOUNT);
     await this.page.type("#fi_birth_year", process.env.BIRTH_YEAR);
     await this.page.type("#fi_birth_month", process.env.BIRTH_MONTH);
     await this.page.type("#fi_birth_day", process.env.BIRTH_DAY);
