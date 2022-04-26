@@ -1,5 +1,6 @@
 import https from "https";
 import { Browser, Page, ElementHandle, errors } from "puppeteer";
+import { setTimeout } from "timers/promises";
 import { getBrowser } from "../common/puppeteer";
 
 export abstract class JobHandler {
@@ -18,6 +19,7 @@ export abstract class JobHandler {
     let msg = "";
     try {
       msg = await this.operate();
+      await setTimeout(2000);
     } catch (e) {
       msg = `失敗しました。 job=${this.jobName}, ${e}`;
       this.result = await this.page.screenshot();
@@ -42,11 +44,21 @@ export abstract class JobHandler {
     text: string,
     index = 0
   ): Promise<ElementHandle<Element>> {
+    try {
+      await this.page.waitForNavigation({ timeout: 5_000 });
+    } catch (e) {
+      if (!(e instanceof errors.TimeoutError)) {
+        throw e;
+      }
+    }
     const xpath = `//${element}[text() = "${text}"]`;
     await this.page.waitForXPath(xpath);
     return (await this.page.$x(xpath))[index];
   }
 
+  /**
+   * load eventが長時間終わらないことがあるので、1秒で抜けて後ステップでwaitしてもらう
+   */
   async goto(url: string) {
     try {
       await this.page.goto(url, { timeout: 1_000 });

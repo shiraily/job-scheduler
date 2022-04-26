@@ -4,7 +4,6 @@ import { JobHandler } from "./handler";
 
 export class TransferFromSumishin extends JobHandler {
   async operate(): Promise<string> {
-    // login
     await this.goto(
       "https://www.netbk.co.jp/contents/pages/wpl010101/i010101CT/DI01010210"
     );
@@ -30,7 +29,7 @@ export class TransferFromSumishin extends JobHandler {
 
     let n = 0;
     while (n < remainTransfer) {
-      await setTimeout(1000);
+      await setTimeout(2000);
       await (
         await this.page.waitForXPath(
           "//span[@class='m-icon-ps_furikomi']//parent::a"
