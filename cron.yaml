@@ -5,7 +5,7 @@ cron:
     timezone: Asia/Tokyo
   - description: Entry of Shinsei Bank point program
     url: /entry-shinsei-bank
-    schedule: 1 of month 11:00
+    schedule: 1,2 of month 11:00
     timezone: Asia/Tokyo
   - description: Transfer to an account repeatedly until 15:00
     url: /transfer-from-sumishin
