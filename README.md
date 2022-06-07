@@ -14,6 +14,10 @@ Personal job scheduler automating some operations on browser.
 
 - 原美術館のキャンセルチェック
 
+### Future work
+
+- Crowd Bankの残高が1万円以上か$100以上になったら通知
+
 # Requirements
 
 - GCP project
