@@ -15,27 +15,35 @@ export class IPOApplication extends JobHandler {
     await this.page.type("input[name=user_password]", process.env.SBI_PASSWORD);
     await this.page.click("input[name=ACT_login]");
 
-    let n = 0;
-    while (n < 5) {
+    const companies: string[] = [];
+    while (companies.length < 5) {
       await this.page.waitForSelector("img", { timeout: 5000 });
       await this.page.goto("https://m.sbisec.co.jp/oeliw011?type=21", {
         waitUntil: "domcontentloaded",
       });
 
+      const imgSelector = "img[alt=申込]";
+
       let canApply = true;
-      await this.page
-        .waitForSelector("img[alt=申込]", { timeout: 5000 })
+      const applyBtn = (await this.page
+        .waitForSelector(imgSelector, { timeout: 5000 })
         .catch((e) => {
           if (!(e instanceof puppeteer.errors.TimeoutError)) {
             console.error(e);
           }
           canApply = false;
-        });
+        })) as puppeteer.ElementHandle<HTMLImageElement>;
       if (!canApply) {
         console.log("no more BB");
         break;
       }
-      await this.page.click("img[alt=申込]");
+      const companyName =
+        (await (
+          await applyBtn.$x("../../..//td//td")
+        )[0].evaluate((e) => e.textContent)) || "";
+      companies.push(companyName);
+
+      await this.page.click(imgSelector);
 
       await this.page.waitForSelector("input[name=suryo]", { timeout: 5000 });
       await this.page.type("input[name=suryo]", unit.toString());
@@ -48,9 +56,12 @@ export class IPOApplication extends JobHandler {
       await this.page.waitForTimeout(1000);
 
       await this.page.click("input[name=order_btn]");
-      console.log(`apply ${n}`);
-      n += 1;
+      console.log(`apply ${companies.length}`);
     }
-    return n == 0 ? null : `${n}件のIPO申込を行いました`;
+
+    const numCompanies = companies.length;
+    return numCompanies == 0
+      ? null
+      : `${numCompanies}件のIPO申込を行いました: ${companies.join(", ")}`;
   }
 }
