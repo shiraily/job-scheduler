@@ -1,7 +1,7 @@
 cron:
   - description: Apply IPO on SBI Securities
     url: /apply-for-ipo
-    schedule: every day 0:30
+    schedule: every day 20:00
     timezone: Asia/Tokyo
   - description: Entry of Shinsei Bank point program
     url: /entry-shinsei-bank
