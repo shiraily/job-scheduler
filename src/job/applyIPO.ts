@@ -39,7 +39,7 @@ export class IPOApplication extends JobHandler {
       }
       const companyName =
         (await (
-          await applyBtn.$x("../../..//td//td")
+          await applyBtn.$x("../../../..//tr/td")
         )[0].evaluate((e) => e.textContent)) || "";
       companies.push(companyName);
 
@@ -62,6 +62,6 @@ export class IPOApplication extends JobHandler {
     const numCompanies = companies.length;
     return numCompanies == 0
       ? null
-      : `${numCompanies}件のIPO申込を行いました: ${companies.join(", ")}`;
+      : `${numCompanies}件のIPO申込を行いました:\n${companies.join("\n")}`;
   }
 }
