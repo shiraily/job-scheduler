@@ -8,7 +8,7 @@ export class TransferFromSumishin extends JobHandler {
       "https://www.netbk.co.jp/contents/pages/wpl010101/i010101CT/DI01010210"
     );
     await this.waitForType(
-      "input[name=userName]",
+      "input[name=userNameNewLogin]",
       process.env.SUMISHIN_USERNAME
     );
     await this.page.type(
