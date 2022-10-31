@@ -41,7 +41,7 @@ export class IPOApplication extends JobHandler {
         (await (
           await applyBtn.$x("../../../..//tr/td")
         )[0].evaluate((e) => e.textContent)) || "";
-      companies.push(companyName);
+      companies.push(companyName.replace("東証グロース 目論見書  |  H P", ""));
 
       await this.page.click(imgSelector);
 

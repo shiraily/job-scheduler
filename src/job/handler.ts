@@ -42,10 +42,11 @@ export abstract class JobHandler {
   async contains(
     element: string,
     text: string,
-    index = 0
+    index = 0,
+    timeout = 5_000
   ): Promise<ElementHandle<Element>> {
     try {
-      await this.page.waitForNavigation({ timeout: 5_000 });
+      await this.page.waitForNavigation({ timeout });
     } catch (e) {
       if (!(e instanceof errors.TimeoutError)) {
         throw e;
