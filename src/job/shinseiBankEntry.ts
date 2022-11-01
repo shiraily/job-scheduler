@@ -20,8 +20,8 @@ export class ShinseiBankEntry extends JobHandler {
     await this.page.click("label[for=fi_policy]");
     await this.page.click("input[type=submit]");
 
-    await this.page.waitForTimeout(3000);
-    await this.page.click("input[type=submit]");
+    await this.page.waitForTimeout(6000);
+    await this.page.click("input[value='エントリー']");
     await this.page.waitForTimeout(3000);
     const title = await this.page.title();
 
