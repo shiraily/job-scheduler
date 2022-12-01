@@ -6,13 +6,13 @@ Personal job scheduler automating some operations on browser.
 
 ### Regular
 
-- SBI証券サイトでのIPO申し込み
-- 新生銀行のポイントプログラムエントリー
-- 住信SBIネット銀行からの連続振込
+- Apply for IPO on SBI Securities / SBI証券サイトでのIPO申し込み
+- Entry point program on Shinsei Bank / 新生銀行のポイントプログラムエントリー
+- Transfer repeatedly from SBI Sumishin Net Bank / 住信SBIネット銀行からの連続振込
 
 ### Unused
 
-- 原美術館のキャンセルチェック
+- Check cancellation of Hara Museum ticket / 原美術館のキャンセルチェック
 
 ### Future work
 
