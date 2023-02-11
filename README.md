@@ -41,6 +41,23 @@ cd /path/to/repo
 yarn
 ```
 
+### Firewall
+
+Only allow api call from cron job
+https://cloud.google.com/appengine/docs/flexible/nodejs/scheduling-jobs-with-cron-yaml#validating_cron_requests
+
+```
+gcloud app firewall-rules update default --action=deny
+gcloud app firewall-rules create 1 \
+--action=allow \
+--source-range='10.0.0.1'
+gcloud app firewall-rules create 2 \
+--action=allow \
+--source-range='0.1.0.1'
+```
+
+# Develop
+
 ### Commands
 
 Need to setup .env file.
@@ -60,21 +77,6 @@ yarn dev
 
 # debug each job
 yarn debug apply-for-ipo
-```
-
-### Firewall
-
-Only allow api call from cron job
-https://cloud.google.com/appengine/docs/flexible/nodejs/scheduling-jobs-with-cron-yaml#validating_cron_requests
-
-```
-gcloud app firewall-rules update default --action=deny
-gcloud app firewall-rules create 1 \
---action=allow \
---source-range='10.0.0.1'
-gcloud app firewall-rules create 2 \
---action=allow \
---source-range='0.1.0.1'
 ```
 
 # Deploy
