@@ -1,5 +1,7 @@
+include .env
+
 deploy:
-	gcloud app deploy --version=1 --quiet
+	gcloud app deploy --version 1 --project $(PROJECT) --quiet
 
 cron:
-	gcloud app deploy cron.yaml --quiet
+	gcloud app deploy cron.yaml --project $(PROJECT) --quiet
