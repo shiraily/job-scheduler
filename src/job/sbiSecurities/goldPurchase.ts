@@ -7,7 +7,7 @@ const unit = 1;
 /**
  * IPO申し込みをすることでIPOチャレンジポイントを取得する
  */
-export class GoldPurchase extends SBIBase {
+export class GoldETFPurchase extends SBIBase {
   async sub(): Promise<string> {
     console.log("start purchasing gold");
     await this.page.waitForSelector("img", { timeout: 5000 });

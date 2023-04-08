@@ -7,6 +7,7 @@ Personal job scheduler automating some operations on browser.
 ### Regular
 
 - Apply for IPO on SBI Securities / SBI証券サイトでのIPO申し込み
+- Purchase Gold ETF on SBI Securities / 同、純金上場信託購入
 - Entry point program on Shinsei Bank / 新生銀行のポイントプログラムエントリー
 - Transfer repeatedly from SBI Sumishin Net Bank / 住信SBIネット銀行からの連続振込
 
