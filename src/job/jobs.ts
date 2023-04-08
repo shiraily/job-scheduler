@@ -1,4 +1,4 @@
-import { IPOApplication } from "./applyIPO";
+import { IPOApplication } from "./sbiSecurities/applyIPO";
 import { ShinseiBankEntry } from "./shinseiBankEntry";
 import { TransferFromSumishin } from "./transferFromSumishin";
 import { JobHandler } from "./handler";

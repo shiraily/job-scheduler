@@ -1,5 +1,5 @@
 import puppeteer from "puppeteer";
-import { JobHandler } from "./handler";
+import { SBIBase } from "./base";
 
 /** 取引単位（株） */
 const unit = 100;
@@ -7,14 +7,9 @@ const unit = 100;
 /**
  * IPO申し込みをすることでIPOチャレンジポイントを取得する
  */
-export class IPOApplication extends JobHandler {
-  async operate(): Promise<string> {
+export class IPOApplication extends SBIBase {
+  async sub(): Promise<string> {
     console.log("start applying IPO");
-    await this.goto("https://www.sbisec.co.jp/");
-    await this.waitForType("input[name=user_id]", process.env.SBI_USERNAME);
-    await this.page.type("input[name=user_password]", process.env.SBI_PASSWORD);
-    await this.page.click("input[name=ACT_login]");
-
     const companies: string[] = [];
     while (companies.length < 5) {
       await this.page.waitForSelector("img", { timeout: 5000 });
