@@ -3,6 +3,10 @@ cron:
     url: /apply-for-ipo
     schedule: every day 20:00
     timezone: Asia/Tokyo
+  - description: Purchase gold on SBI Securities
+    url: /purchase-gold
+    schedule: 3,12,21 of month 11:00
+    timezone: Asia/Tokyo
   - description: Entry of Shinsei Bank point program
     url: /entry-shinsei-bank
     schedule: 1,2 of month 11:00
