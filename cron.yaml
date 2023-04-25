@@ -5,7 +5,7 @@ cron:
     timezone: Asia/Tokyo
   - description: Purchase Gold ETF on SBI Securities
     url: /purchase-gold-etf
-    schedule: 3,8,13,18,23,28 of month 11:00
+    schedule: 3,11,19,27 of month 11:00
     timezone: Asia/Tokyo
   - description: Entry of Shinsei Bank point program
     url: /entry-shinsei-bank

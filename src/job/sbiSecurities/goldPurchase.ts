@@ -2,7 +2,7 @@ import { setTimeout } from "timers/promises";
 import { SBIBase } from "./base";
 
 /** 取引単位（株） */
-const unit = 2;
+const unit = 1;
 
 /**
  * IPO申し込みをすることでIPOチャレンジポイントを取得する
