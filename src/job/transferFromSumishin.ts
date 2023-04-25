@@ -21,7 +21,7 @@ export class TransferFromSumishin extends JobHandler {
     await setTimeout(2000);
     const text = await (
       await this.page.waitForSelector(
-        "div[class*=top-personal-remain-other] > span[class*=m-txtEx]"
+        "div.top-personal-remain-other > a > span.m-txtEx"
       )
     ).evaluate((el) => el.textContent);
     const remainTransfer = Math.min(parseInt(text) || 0, 4);
