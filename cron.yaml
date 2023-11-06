@@ -7,10 +7,6 @@ cron:
     url: /purchase-gold-etf
     schedule: 3,11,19,27 of month 11:00
     timezone: Asia/Tokyo
-  - description: Entry of Shinsei Bank point program
-    url: /entry-shinsei-bank
-    schedule: 1,2 of month 11:00
-    timezone: Asia/Tokyo
   - description: Transfer to an account repeatedly until 15:00
     url: /transfer-from-sumishin
     schedule: 25 of month 18:00
